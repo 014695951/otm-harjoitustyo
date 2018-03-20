@@ -1,0 +1,123 @@
+commit 3c4123527afb42dd275ab34f620d08798bc96e63
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 18:24:50 2018 +0200
+
+    nimen muutos
+
+ tiedostoja/file22 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0a36324a3a53ef527945b4db976b88c2fa62da34
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 18:23:43 2018 +0200
+
+    poisto ja nimen muutos
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit bdd597b57d9546c2f8f560c3aab5d7f78dca368e
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 18:17:30 2018 +0200
+
+    lisäys
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 01c27e9bc669c5f943bfe5a530640d8dc844dffc
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 18:05:12 2018 +0200
+
+    lisäys ja poisto
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 97d901b2cc26f52d7810d23b96dff2a3ac9b3e11
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 18:01:19 2018 +0200
+
+    nimen muutos
+
+ tiedosto.txt | 5 -----
+ 1 file changed, 5 deletions(-)
+
+commit da646c586c912241081d6bb6c20a2b92f387d001
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 18:00:45 2018 +0200
+
+    nimen muutos
+
+ eka.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 341b705925955c5f5ceb90649f059e64ac09791c
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:58:17 2018 +0200
+
+    poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit eacf36133900619a54fe02cb932d969a52bc7fbf
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:55:27 2018 +0200
+
+    lisäys
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit eae6f01fe065747e2b1115feb1ab83615c03fa57
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:48:51 2018 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 5cfe720fa2fc88ee21e6faf23a396fc54c9280aa
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:44:49 2018 +0200
+
+    muutos ja lisäys
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 50410c6695b077157b7b0e311ba9f0e71d93576d
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:42:44 2018 +0200
+
+    muutos ja lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0ddb9c44fe4ecede83c92cd838e8299257512c5a
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:35:50 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit f892444d8e36cb84a2d8eb851ddb6a85d894017a
+Author: Antton Koskinen <antton.koskinen@aalto.fi>
+Date:   Tue Mar 20 17:25:47 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
