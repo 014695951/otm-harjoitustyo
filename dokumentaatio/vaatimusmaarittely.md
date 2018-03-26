@@ -8,7 +8,7 @@ Sovelluksella on ainoastaan normaali käyttäjiä.
 
 ## Toiminnallisuus
 
-# Perustoiminnallisuus
+### Perustoiminnallisuus
 
 -Avaruusalus liikkuu vapaasti peliruudulla
 -Objektit liikkuvat sattumanvaraisesti
@@ -18,7 +18,7 @@ Sovelluksella on ainoastaan normaali käyttäjiä.
 -Mikäli pelaaja pääsee kaikkien aikojen top 10 hän saa lisätä oman käyttäjänimensä listalle
 -Pelin lopuksi kaikkien aikojen top 10 näytetään järjesttynä listana
 
-# Jatkokehitys
+### Jatkokehitys
 
 -Pelaaja voi tuhota objekteja ampumalla
 -Objektien tuhoamisesta saa pisteitä, joiden perusteella pelaajat pisteytetään ajan sijaan
