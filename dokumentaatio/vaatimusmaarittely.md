@@ -18,7 +18,7 @@ Sovelluksella on ainoastaan normaali käyttäjiä.
 - Ajan kuluessa objektit alkavat liikkua keskimäärin nopeammin
 - Pelaajan suoritus mitataan kuluneella ajalla
 - Mikäli pelaaja pääsee kaikkien aikojen top 10 hän saa lisätä oman käyttäjänimensä listalle
-- Pelin lopuksi kaikkien aikojen top 10 näytetään järjesttynä listana
+- Pelin lopuksi kaikkien aikojen top 10 näytetään järjestettynä listana
 
 ### Jatkokehitys
 
