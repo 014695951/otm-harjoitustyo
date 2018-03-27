@@ -6,7 +6,7 @@ Sovellus mukailee Asteroids-peliä, jossa pelaaja väistelee(ja tuhoaa) objektej
 
 ## Käyttäjät
 
-Sovelluksella on ainoastaan normaali käyttäjiä. 
+Sovelluksella on ainoastaan normaalikäyttäjiä. 
 
 ## Toiminnallisuus
 
