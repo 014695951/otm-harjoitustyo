@@ -14,7 +14,7 @@ public class Maksukortti {
     }
  
     public void lataaRahaa(int lisays) {
-        this.saldo += lisays;
+        this.saldo = this.saldo + lisays;
     }
  
     public boolean otaRahaa(int maara) {
