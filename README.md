@@ -5,5 +5,5 @@
 
 ## Dokumentaatio
 
-* [vaativuusmäärittely](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely)
-* [työkirjanpito](https://github.com/014695951/otm-harjoitustyo/edit/master/dokumentaatio/tuntikirjanpito.md)
+* [vaatimusmäärittely](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+* [tuntikirjanpito](https://github.com/014695951/otm-harjoitustyo/edit/master/dokumentaatio/tuntikirjanpito.md)
