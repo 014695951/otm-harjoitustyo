@@ -13,15 +13,16 @@ Sovelluksella on ainoastaan normaalikäyttäjiä.
 ### Perustoiminnallisuus
 
 - Avaruusalus liikkuu vapaasti peliruudulla
-- Objektit liikkuvat sattumanvaraisesti
-- Objektit liikkuvat eri nopeuksilla
-- Ajan kuluessa objektit alkavat liikkua keskimäärin nopeammin
+- Objektit ilmestyvät sattumanvaraisesti
 - Pelaajan suoritus mitataan kuluneella ajalla
 - Mikäli pelaaja pääsee kaikkien aikojen top 10 hän saa lisätä oman käyttäjänimensä listalle
 - Pelin lopuksi kaikkien aikojen top 10 näytetään järjestettynä listana
 
 ### Jatkokehitys
 
+- Objektit liikkuvat sattumanvaraisesti
+- Objektit liikkuvat eri nopeuksilla
+- Ajan kuluessa objektit alkavat liikkua keskimäärin nopeammin
 - Pelaaja voi tuhota objekteja ampumalla
 - Objektien tuhoamisesta saa pisteitä, joiden perusteella pelaajat pisteytetään ajan sijaan
 - Objektit hajoavat pienemmiksi objekteiksi, kun niitä ammutaan
