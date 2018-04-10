@@ -1,5 +1,7 @@
 package asteroidipeli;
 
+import java.awt.geom.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.canvas.Canvas;
 
@@ -14,7 +16,8 @@ public class AlusObjekti extends PeliObjekti {
         super(piirturi);
         this.kanvaasi = piirturi.getCanvas();
         this.piirturi = piirturi;
-        piirturi.fillRect(40, 40, 40, 40);
+        this.x = (double) 300;
+        this.y = (double) 300;
     }
 
     public void kaannyVasempaan() {
@@ -27,7 +30,6 @@ public class AlusObjekti extends PeliObjekti {
 
     public void alas() {
         this.piirturi.moveTo(x, y + 1);
-        this.piirturi.fillRect(10, 10, 10, 10);
     }
 
     public void ylos() {
@@ -44,6 +46,10 @@ public class AlusObjekti extends PeliObjekti {
 
     public double getY() {
         return this.y;
+    }
+    
+    public void piirraAlus() {
+        
     }
 
 }
