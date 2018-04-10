@@ -1,6 +1,6 @@
 # Asteroidi-peli
 
-Tarkoituksena on toteuttaa legendaarisen Asteroids(https://en.wikipedia.org/wiki/Asteroids_(video_game)-pelin moderni mukaelma. 
+Tarkoituksena on toteuttaa legendaarisen [Asteroids-pelin](https://en.wikipedia.org/wiki/Asteroids_(video_game) moderni mukaelma. 
 
 ## Dokumentaatio
 
