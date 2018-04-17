@@ -1,4 +1,4 @@
-# Tuntikirjanpito
+# Työaikakirjanpito
 
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
