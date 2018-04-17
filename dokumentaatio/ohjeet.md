@@ -1,4 +1,4 @@
-Aluksen kontrollit:
+* Aluksen kontrollit:
 -alas(S)
 -ylös(W)
 -oikealle(D)
