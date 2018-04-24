@@ -55,8 +55,9 @@ public class AsteroidiObjekti {
     }
 
     public boolean tormaa(Node kuva) {
-        return this.kuva.getBoundsInParent().intersects(kuva.getBoundsInParent());
+        return this.kuva.getBoundsInParent().intersects(kuva.getBoundsInParent());    
     }
+    
 
     public void setX(double x) {
         this.kuva.setTranslateX(x);
