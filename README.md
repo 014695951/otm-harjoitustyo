@@ -7,5 +7,5 @@ Tarkoituksena on toteuttaa legendaarisen [Asteroids-pelin](https://en.wikipedia.
 * [vaatimusmäärittely](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 * [työaikakirjanpito](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 * [arkkitehtuuri](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
-* [ohjeet](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/ohjeet.md)
+* [käyttöohje](https://github.com/014695951/otm-harjoitustyo/blob/master/dokumentaatio/käyttöohje.md)
 * [release](https://github.com/014695951/otm-harjoitustyo/releases)
