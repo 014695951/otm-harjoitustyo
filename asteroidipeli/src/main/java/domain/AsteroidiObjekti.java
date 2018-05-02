@@ -6,8 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 
-public class AsteroidiObjekti {
+
+
+public class AsteroidiObjekti extends PeliObjekti {
 
     private Node kuva;
     private Point2D nopeus;
@@ -15,74 +18,33 @@ public class AsteroidiObjekti {
     private Pane juuri;
     private Random randomi;
     private int koko;
+    private Polygon monikulmio;
 
-    public AsteroidiObjekti(Pane juuri, int koko) {
+    public AsteroidiObjekti(Pane juuri) {
         this.randomi = new Random();
         this.juuri = juuri;
         this.nopeus = new Point2D(arvoNopeus(), arvoNopeus());
-        this.kuva = luoAsteroidi(koko);
-        this.koko = koko;
+        this.kuva = luoAsteroidi();
         arvoSijainti();
     }
 
-    public void paivita() {
-        this.kuva.setTranslateX(this.kuva.getTranslateX() + this.nopeus.getX());
-        this.kuva.setTranslateY(this.kuva.getTranslateY() + this.nopeus.getY());
-    }
+    @Override
+    public boolean ulkona() {
 
-    public void setNopeus(Point2D nopeus) {
-        this.nopeus = nopeus;
-    }
-
-    public Point2D getNopeus() {
-        return this.nopeus;
-    }
-
-    public Node getKuva() {
-        return this.kuva;
-    }
-
-    public boolean elossa() {
-        return this.elossa;
-    }
-
-    public boolean kuollut() {
-        return !this.elossa;
-    }
-
-    public void setElossa(boolean elossa) {
-        this.elossa = elossa;
-    }
-
-    public boolean tormaa(Node kuva) {
-        return this.kuva.getBoundsInParent().intersects(kuva.getBoundsInParent());    
-    }
-    
-
-    public void setX(double x) {
-        this.kuva.setTranslateX(x);
-    }
-
-    public void setY(double y) {
-        this.kuva.setTranslateY(y);
-    }
-
-    public boolean ulkona(Pane juuri) {
-
-        if (this.kuva.getTranslateX() > juuri.getWidth() + 30) {
+        if (this.kuva.getTranslateX() > this.juuri.getWidth() + 30) {
             this.kuva.setTranslateX(0);
         }
 
         if (this.kuva.getTranslateX() < -30) {
-            this.kuva.setTranslateX(juuri.getWidth());
+            this.kuva.setTranslateX(this.juuri.getWidth());
         }
 
-        if (this.kuva.getTranslateY() > juuri.getHeight() + 30) {
+        if (this.kuva.getTranslateY() > this.juuri.getHeight() + 30) {
             this.kuva.setTranslateY(0);
         }
 
         if (this.kuva.getTranslateY() < -30) {
-            this.kuva.setTranslateY(juuri.getHeight());
+            this.kuva.setTranslateY(this.juuri.getHeight());
         }
 
         return true;
@@ -94,33 +56,33 @@ public class AsteroidiObjekti {
         double random = this.randomi.nextDouble();
 
         if (random < 0.25) {
-            setX(-30);
+            this.kuva.setTranslateX(-30);
 
             if (random < 0.175) {
-                setY(this.juuri.getHeight() * this.randomi.nextDouble());
+                this.kuva.setTranslateY(this.juuri.getHeight() * this.randomi.nextDouble());
             }
 
         } else if (random < 0.5) {
-            setX(this.juuri.getWidth() + 30);
+            this.kuva.setTranslateX(this.juuri.getWidth() + 30);
 
             if (random < 0.375) {
-                setY(this.juuri.getHeight() * this.randomi.nextDouble());
+                this.kuva.setTranslateY(this.juuri.getHeight() * this.randomi.nextDouble());
             }
 
         } else if (random < 0.75) {
-            setY(-30);
+            this.kuva.setTranslateY(-30);
 
             if (random < 0.675) {
-                setX(this.juuri.getWidth() * this.randomi.nextDouble());
+                this.kuva.setTranslateX(this.juuri.getWidth() * this.randomi.nextDouble());
             }
 
         } else {
-            setY(this.juuri.getHeight() + 30);
+            this.kuva.setTranslateY(this.juuri.getHeight() + 30);
 
             if (random < 0.875) {
-                setX(this.juuri.getWidth() * this.randomi.nextDouble());
+                this.kuva.setTranslateX(this.juuri.getWidth() * this.randomi.nextDouble());
             } else {
-                setX(-30);
+                this.kuva.setTranslateX(-30);
             }
         }
 
@@ -137,33 +99,47 @@ public class AsteroidiObjekti {
         return random / 10;
     }
 
+    @Override
     public double getRajat() {
         return 0;
     }
 
-    public Node luoAsteroidi(int koko) {
+    public Node luoAsteroidi() {
 
-        double random = this.randomi.nextDouble();
-        double ala = 0;
+        Random randomi = new Random();
 
-        if (koko < 1) {
-            return null;
+        double ala = randomi.nextInt(10);
+
+        if (koko <= 1) {
+
+            ala = +10;
+
+        } else if (koko <= 2) {
+            ala = +20;
+        } else {
+            ala = +30;
         }
 
-        if (random < 0.33 && koko >= 1) {
-            ala = 10 + random * 10;
-            this.koko = 1;
+        Polygon monikulmio = new Polygon();
 
-        } else if (random < 0.68 && koko >= 2) {
-            ala = 20 + random * 10;
-            this.koko = 2;
+        double c1 = Math.cos(Math.PI * 2 / 5);
+        double c2 = Math.cos(Math.PI / 5);
+        double s1 = Math.sin(Math.PI * 2 / 5);
+        double s2 = Math.sin(Math.PI * 4 / 5);
 
-        } else if (random < 1 && koko >= 3) {
-            ala = 30 + random * 10;
-            this.koko = 3;
+        monikulmio.getPoints().addAll(
+                ala, 0.0,
+                ala * c1, -1 * ala * s1,
+                -1 * ala * c2, -1 * ala * s2,
+                -1 * ala * c2, ala * s2,
+                ala * c1, ala * s1);
+
+        for (int i = 0; i < monikulmio.getPoints().size(); i++) {
+            int muutos = randomi.nextInt(5) - 2;
+            monikulmio.getPoints().set(i, monikulmio.getPoints().get(i) + muutos);
         }
 
-        return new Circle(0, 0, ala, Color.PURPLE);
+        return monikulmio;
 
     }
 
@@ -173,6 +149,45 @@ public class AsteroidiObjekti {
 
     public double setKoko() {
         return this.koko;
+    }
+
+    public void paivita() {
+        this.kuva.setTranslateX(this.kuva.getTranslateX() + this.nopeus.getX());
+        this.kuva.setTranslateY(this.kuva.getTranslateY() + this.nopeus.getY());
+    }
+
+    public void setNopeus(Point2D nopeus) {
+        this.nopeus = nopeus;
+    }
+
+    public Point2D getNopeus() {
+        return nopeus;
+    }
+
+    public Node getKuva() {
+        return kuva;
+    }
+
+    public boolean elossa() {
+        return elossa;
+    }
+
+    public boolean kuollut() {
+        return !elossa;
+    }
+
+    public void setElossa(boolean elossa) {
+        this.elossa = elossa;
+    }
+
+    public boolean tormaa(Node kuva) {
+
+        return this.kuva.getBoundsInParent().intersects(kuva.getBoundsInParent());
+
+    }
+
+    public void laskeNopeutta(double kerroin) {
+        this.nopeus = this.nopeus.multiply(0.9995);
     }
 
     public boolean sisalla() {

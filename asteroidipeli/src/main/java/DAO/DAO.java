@@ -1,23 +1,13 @@
-
 package DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.util.List;
 
+public interface DAO {
 
+    void create(Nimimerkki nimimerkki) ;
 
-public class DAO {
-    
-//    private Connection yhteys;
-//    
-//    
-//    public DAO() {
-//        this.yhteys = null;
-//        
-//        try {
-//            Class.forName("tulostaulukko.db");
-//            this.yhteys = DriverManager.getConnection(url)
-//        }
-//    }     
-    
+    void delete(Integer id) ;
+
+    List<Nimimerkki> getAll() ;
+
 }

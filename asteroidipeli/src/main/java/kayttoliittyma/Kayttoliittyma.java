@@ -3,12 +3,11 @@ package kayttoliittyma;
 import domain.AlusObjekti;
 import domain.AmmusObjekti;
 import domain.AsteroidiObjekti;
+import domain.PeliObjektit;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -20,12 +19,7 @@ import javafx.stage.Stage;
 public class Kayttoliittyma extends Application {
 
     private Pane juuri = new Pane();
-
-    private List<AmmusObjekti> ammukset = new ArrayList<>();
-    private List<AsteroidiObjekti> asteroidit = new ArrayList<>();
-    private AlusObjekti alus;
-
-    private int vaikeusaste = 1;
+    private PeliObjektit objektit = new PeliObjektit(this.juuri);
 
     private Parent peli() {
 
@@ -37,13 +31,20 @@ public class Kayttoliittyma extends Application {
 
         AtomicInteger pisteet = new AtomicInteger();
 
-        this.alus = uusiAlusObjekti(300, 300);
+        uusiAlusObjekti();
 
         AnimationTimer timer = new AnimationTimer() {
 
             @Override
             public void handle(long now) {
                 paivita(teksti, pisteet);
+
+                if (gameOver()) {
+                    super.stop();
+
+                    loppuruutu();
+                }
+
             }
         };
 
@@ -52,96 +53,26 @@ public class Kayttoliittyma extends Application {
         return juuri;
     }
 
-    private Parent alkuruutu(Scene peli, Stage ikkuna) {
+    private Pane loppuruutu() {
 
-        Button helppo = new Button("helppo");
-        Button vaikea = new Button("vaikea");
         Button aloita = new Button("aloita");
 
-        vaikea.setOnAction((eventti) -> this.vaikeusaste = 2);
-        helppo.setOnAction((eventti) -> this.vaikeusaste = 1);
-        aloita.setOnAction((eventti) -> ikkuna.setScene(peli));
-
-        HBox valikko = new HBox(vaikea);
+        HBox valikko = new HBox(aloita);
 
         valikko.setPadding(new Insets(20, 20, 20, 20));
+
         valikko.setSpacing(10);
 
         return valikko;
     }
 
-    private Parent loppuruutu() {
-
-        return juuri;
-    }
-
     private void paivita(Text teksti, AtomicInteger pisteet) {
 
-        List<AmmusObjekti> ammukset = this.ammukset;
-        List<AsteroidiObjekti> asteroidit = this.asteroidit;
+        this.objektit.tormaako();
+        this.juuri = this.objektit.update();
 
-        for (AsteroidiObjekti asteroidi : asteroidit) {
-
-            for (AsteroidiObjekti a : asteroidit) {
-
-                if (a != asteroidi) {
-                    if (asteroidi.tormaa(a.getKuva()) && (a.sisalla() == true && asteroidi.sisalla() == true)) {
-
-                        asteroidi.setElossa(false);
-                        a.setElossa(false);
-
-                        this.juuri.getChildren().removeAll(a.getKuva(), asteroidi.getKuva());
-
-                    }
-                }
-            }
-
-            if (this.alus.tormaa(asteroidi.getKuva()) && asteroidi.elossa() == true) {
-
-                this.alus.setElossa(false);
-                this.juuri.getChildren().removeAll(this.alus.getKuva(), asteroidi.getKuva());
-            }
-
-            //    Shape.intersect(shape1, shape2)
-            for (AmmusObjekti ammus : ammukset) {
-
-                if (ammus.ulkona() == true) {
-                    this.juuri.getChildren().remove(ammus.getKuva());
-                }
-
-                if (ammus.tormaa(asteroidi.getKuva()) && asteroidi.elossa() == true) {
-
-//                    int koko = asteroidi.getKoko();
-//
-//                    if (koko > 1) {
-//
-//                        for (int i = koko; i > 0; i++) {
-//                            uusiAsteroidiObjekti(koko - 1);
-//                        }
-//                    }
-                    ammus.setElossa(false);
-                    asteroidi.setElossa(false);
-
-                    teksti.setText("Points: " + pisteet.addAndGet(100 * asteroidi.getKoko()));
-
-                    this.juuri.getChildren().removeAll(ammus.getKuva(), asteroidi.getKuva());
-                }
-
-            }
-        }
-
-        this.ammukset.removeIf(AmmusObjekti::kuollut);
-        this.asteroidit.removeIf(AsteroidiObjekti::kuollut);
-
-        this.ammukset.forEach(AmmusObjekti::paivita);
-        this.asteroidit.forEach(AsteroidiObjekti::paivita);
-
-        this.alus.ulkona(this.juuri);
-
-        this.alus.paivita();
-
-        if (Math.random() < 0.005 * this.vaikeusaste) {
-            uusiAsteroidiObjekti(3);
+        if (Math.random() < 0.005) {
+            uusiAsteroidiObjekti();
         }
     }
 
@@ -149,11 +80,11 @@ public class Kayttoliittyma extends Application {
     public void start(Stage ikkuna) throws Exception {
 
         Scene peli = new Scene(peli());
-//      Scene menu = new Scene(alkuruutu(peli, ikkuna));
-//      Scene loppu = new Scene(loppuruutu());
+        Scene loppuruutu = new Scene(loppuruutu());
 
-//      ikkuna.setScene(menu);
         ikkuna.setScene(peli);
+
+        AlusObjekti alus = this.objektit.getAlus();
 
         peli.setOnKeyPressed(eventti -> {
 
@@ -172,10 +103,12 @@ public class Kayttoliittyma extends Application {
                     break;
             }
 
+            this.objektit.setAlus(alus);
+
         });
 
         peli.setOnMouseMoved(eventti -> {
-            this.alus.kaanna(eventti.getX(), eventti.getY());
+            alus.kaanna(eventti.getX(), eventti.getY());
 
         });
 
@@ -183,21 +116,28 @@ public class Kayttoliittyma extends Application {
             uusiAmmusObjekti();
         });
 
+        ikkuna.setOnCloseRequest(eventti -> {
+
+        });
+
         ikkuna.show();
+
     }
 
-    public AlusObjekti uusiAlusObjekti(double x, double y) {
-        AlusObjekti alus = new AlusObjekti(x, y);
+    public AlusObjekti uusiAlusObjekti() {
+        AlusObjekti alus = new AlusObjekti(this.juuri);
+
+        this.objektit.lisaaAlus(alus);
 
         this.juuri.getChildren().add(alus.getKuva());
 
         return alus;
     }
 
-    public AsteroidiObjekti uusiAsteroidiObjekti(int koko) {
-        AsteroidiObjekti asteroidi = new AsteroidiObjekti(this.juuri, koko);
+    public AsteroidiObjekti uusiAsteroidiObjekti() {
+        AsteroidiObjekti asteroidi = new AsteroidiObjekti(this.juuri);
 
-        this.asteroidit.add(asteroidi);
+        this.objektit.lisaaAsteroidi(asteroidi);
 
         this.juuri.getChildren().add(asteroidi.getKuva());
 
@@ -206,14 +146,19 @@ public class Kayttoliittyma extends Application {
 
     public AmmusObjekti uusiAmmusObjekti() {
         AmmusObjekti ammus = new AmmusObjekti(this.juuri);
-        ammus.setSijainti(this.alus.getKuva().getTranslateX(), this.alus.getKuva().getTranslateY());
-        ammus.setNopeus(this.alus.getNopeus().normalize().multiply(1.03));
+        ammus.setSijainti(this.objektit.getAlus().getKuva().getTranslateX(), this.objektit.getAlus().getKuva().getTranslateY());
+        ammus.setNopeus(this.objektit.getAlus().getNopeus().normalize().multiply(1.03));
 
-        this.ammukset.add(ammus);
+        this.objektit.lisaaAmmus(ammus);
 
         this.juuri.getChildren().add(ammus.getKuva());
 
         return ammus;
+    }
+
+    public boolean gameOver() {
+
+        return this.objektit.getAlus().kuollut();
     }
 
 }
