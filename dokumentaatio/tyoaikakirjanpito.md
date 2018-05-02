@@ -10,4 +10,6 @@
 | 17.4. | 7    | Yritys saada kappaleet törmäämään toisiinsa |
 | 23.4. | 7    | Objektien törmääminen, sekä joitakin testejä |
 | 24.4. | 7    | Aluksen liikkuminen ja yritys saada laajennettua käyttöliittymää|
-| sum   | 40   | 
+| 30.4. | 7    | Sovelluslogiikan erottamista käyttöliittymästä |
+| 1.5.  | 7    | Sovelluslogiikan korjaamista|
+| sum   | 54   | 
